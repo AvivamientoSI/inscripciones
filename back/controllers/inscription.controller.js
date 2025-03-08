@@ -1,4 +1,33 @@
 import {ABC, DIS, ES} from '../models/incription.model.js';
+import nodemailer from "nodemailer";
+
+
+const sendConfirmationEmail = async (toEmail, userName) => {
+    try {
+        let transporter = nodemailer.createTransport({
+            service: "gmail", // Puedes usar otro servicio SMTP
+            auth: {
+                user: "avivamientosanisidro@gmail.com", // Tu correo
+                pass: "hxmv dqun hyur cbtu" // Tu contraseña o App Password
+            }
+        });
+
+        let mailOptions = {
+            from: '"AvivamientoSI" <avivamientosanisidro@gmail.com>',
+            to: toEmail,
+            subject: "Confirmación de Inscripción",
+            text: `Hola ${userName}, gracias por inscribirte en la escuela ABC.`,
+            html: `<p>Hola <b>${userName}</b>,</p><p>Gracias por inscribirte en la escuela ABC. Te esperamos pronto. Bendiciones</p>`
+        };
+
+        await transporter.sendMail(mailOptions);
+        console.log("Correo enviado a:", toEmail);
+
+    } catch (error) {
+        console.error("Error al enviar correo:", error.message);
+    }
+};
+
 
 export const createABC = async (req, res)=>{
     const abc = req.body;
@@ -17,6 +46,7 @@ export const createABC = async (req, res)=>{
             return res.status(400).json({success: false, message: "Ya estas registrado/a" });
         }
         await newABC.save();
+        await sendConfirmationEmail(email, name);
         res.status(201).json({success: true, data: newABC, message:"Inscripción creada con éxito"});
     } catch (error) {
         console.error("Error in Create ABC:", error.message);
