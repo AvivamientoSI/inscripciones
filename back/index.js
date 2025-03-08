@@ -5,6 +5,7 @@ import cors from "cors";
 import {connectDB} from "./config/db.js";
 
 import schoolRoutes from "./routes/school.route.js";
+import inscriptionRoutes from "./routes/inscription.route.js";
 
 dotenv.config();
 
@@ -15,6 +16,7 @@ app.use(e.json());
 const port = process.env.PORT || 5000;
 
 app.use("/api/schools", schoolRoutes);
+app.use("/", inscriptionRoutes);
 
 app.listen(port, () => {
   connectDB();

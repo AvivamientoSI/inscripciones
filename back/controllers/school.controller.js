@@ -1,5 +1,4 @@
 import School from "../models/school.model.js";
-import mongoose from "mongoose";
 
 export const getSchools = async (req, res) => {
     try {
