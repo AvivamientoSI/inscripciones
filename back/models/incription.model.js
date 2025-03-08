@@ -11,7 +11,8 @@ const abcSchema = new mongoose.Schema({
     },
   document: {
     type: Number,
-    required: true
+    required: true,
+    unique: true
   },
     email: {
         type: String,

@@ -10,6 +10,12 @@ export const createABC = async (req, res)=>{
     const newABC = new ABC(abc)
 
     try {
+        const {document} = abc;
+        const existingPerson = await ABC.findOne({document});
+
+        if(existingPerson) {
+            return res.status(400).json({ message: "Ya estas registrado/a" });
+        }
         await newABC.save();
         res.status(201).json({success: true, data: newABC});
     } catch (error) {
@@ -28,6 +34,12 @@ export const createDIS = async (req, res)=>{
     const newDIS = new DIS(dis)
 
     try {
+        const {document} = dis;
+        const existingPerson = await DIS.findOne({document});
+
+        if(existingPerson) {
+            return res.status(400).json({ message: "Ya estas registrado/a" });
+        }
         await newDIS.save();
         res.status(201).json({success: true, data: newDIS});
     } catch (error) {
@@ -46,6 +58,12 @@ export const createES = async (req, res)=>{
     const newES = new ES(es)
 
     try {
+        const {document} = es;
+        const existingPerson = await ES.findOne({document});
+
+        if(existingPerson) {
+            return res.status(400).json({ message: "Ya estas registrado/a" });
+        }
         await newES.save();
         res.status(201).json({success: true, data: newES});
     } catch (error) {
