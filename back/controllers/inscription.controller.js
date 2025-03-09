@@ -13,7 +13,7 @@ const sendConfirmationEmailABC = async (email, name) => {
             }
         });
 
-        const mailOptions = {
+        const mailOptionsABC = {
             from: '"AvivamientoSI" <avivamientosanisidro@gmail.com>',
             to: email,
             subject: "¡Inscripción confirmada!",
@@ -30,7 +30,7 @@ const sendConfirmationEmailABC = async (email, name) => {
             </div>`
         };
 
-        await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptionsABC);
         console.log("Correo enviado a:", email);
 
     } catch (error) {
@@ -74,7 +74,7 @@ const sendConfirmationEmailDIS = async (email, name) => {
             }
         });
 
-        const mailOptions = {
+        const mailOptionsDIS = {
             from: '"AvivamientoSI" <avivamientosanisidro@gmail.com>',
             to: email,
             subject: "¡Inscripción confirmada!",
@@ -92,7 +92,7 @@ const sendConfirmationEmailDIS = async (email, name) => {
             </div>`
         };
 
-        await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptionsDIS);
         console.log("Correo enviado a:", email);
 
     } catch (error) {
@@ -135,7 +135,7 @@ const sendConfirmationEmailES = async (email, name) => {
             }
         });
 
-        const mailOptions = {
+        const mailOptionsES = {
             from: '"AvivamientoSI" <avivamientosanisidro@gmail.com>',
             to: email,
             subject: "¡Inscripción confirmada!",
@@ -152,7 +152,7 @@ const sendConfirmationEmailES = async (email, name) => {
             </div>`
         };
 
-        await transporter.sendMail(mailOptions);
+        await transporter.sendMail(mailOptionsES);
         console.log("Correo enviado a:", email);
 
     } catch (error) {
