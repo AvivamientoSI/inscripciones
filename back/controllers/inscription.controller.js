@@ -64,7 +64,7 @@ export const createABC = async (req, res)=>{
     }
 };
 
-const sendConfirmationEmailDIS = async (email, name) => {
+/* const sendConfirmationEmailDIS = async (email, name) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
@@ -98,7 +98,7 @@ const sendConfirmationEmailDIS = async (email, name) => {
     } catch (error) {
         console.error("Error al enviar correo:", error.message);
     }
-};
+}; */
 
 export const createDIS = async (req, res)=>{
     const dis = req.body;
@@ -117,7 +117,7 @@ export const createDIS = async (req, res)=>{
             return res.status(400).json({ message: "Ya estas registrado/a" });
         }
         await newDIS.save();
-        await sendConfirmationEmailDIS(dis.email, dis.name);
+        /* await sendConfirmationEmailDIS(dis.email, dis.name); */
         res.status(201).json({success: true, data: newDIS});
     } catch (error) {
         console.error("Error in Create DIS:", error.message);
@@ -125,7 +125,7 @@ export const createDIS = async (req, res)=>{
     }
 };
 
-const sendConfirmationEmailES = async (email, name) => {
+/* const sendConfirmationEmailES = async (email, name) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
@@ -158,7 +158,7 @@ const sendConfirmationEmailES = async (email, name) => {
     } catch (error) {
         console.error("Error al enviar correo:", error.message);
     }
-};
+}; */
 
 export const createES = async (req, res)=>{
     const es = req.body;
@@ -177,7 +177,7 @@ export const createES = async (req, res)=>{
             return res.status(400).json({ message: "Ya estas registrado/a" });
         }
         await newES.save();
-        await sendConfirmationEmailES(es.email, es.name);
+        /* await sendConfirmationEmailES(es.email, es.name); */
         res.status(201).json({success: true, data: newES});
     } catch (error) {
         console.error("Error in Create ES:", error.message);
