@@ -1,3 +1,4 @@
+import { text } from 'express';
 import {ABC, DIS, ES} from '../models/incription.model.js';
 import nodemailer from "nodemailer";
 
@@ -77,6 +78,7 @@ const sendConfirmationEmailDIS = async (email, name) => {
             from: '"AvivamientoSI" <avivamientosanisidro@gmail.com>',
             to: email,
             subject: "¡Inscripción confirmada!",
+            text: "hola",
             html: `
             <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd;">
                 <h2 style="color: #4CAF50;">✅ Inscripción confirmada</h2>
