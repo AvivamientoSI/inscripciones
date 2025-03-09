@@ -1,8 +1,8 @@
 import {ABC, DIS, ES} from '../models/incription.model.js';
-/* import nodemailer from "nodemailer"; */
+import nodemailer from "nodemailer";
 
 
-/* const sendConfirmationEmail = async (email, name) => {
+const sendConfirmationEmail = async (email, name) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
@@ -26,7 +26,7 @@ import {ABC, DIS, ES} from '../models/incription.model.js';
     } catch (error) {
         console.error("Error al enviar correo:", error.message);
     }
-}; */
+};
 
 
 export const createABC = async (req, res)=>{
@@ -46,7 +46,7 @@ export const createABC = async (req, res)=>{
             return res.status(400).json({success: false, message: "Ya estas registrado/a" });
         }
         await newABC.save();
-        /* await sendConfirmationEmail(email, name); */
+        await sendConfirmationEmail(abc.email, abc.name);
         res.status(201).json({success: true, data: newABC, message:"Inscripción creada con éxito"});
     } catch (error) {
         console.error("Error in Create ABC:", error.message);
