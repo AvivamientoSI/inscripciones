@@ -1,6 +1,8 @@
-import { text } from 'express';
 import {ABC, DIS, ES} from '../models/incription.model.js';
 import nodemailer from "nodemailer";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 
 const sendConfirmationEmailABC = async (email, name) => {
@@ -8,8 +10,8 @@ const sendConfirmationEmailABC = async (email, name) => {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
             auth: {
-                user: "avivamientosanisidro@gmail.com", // Tu correo
-                pass: "hxmv dqun hyur cbtu" // Tu contraseña o App Password
+                user: process.env.EMAIL_USER , // Tu correo
+                pass: process.env.EMAIL_PASS // Tu contraseña o App Password
             }
         });
 
@@ -20,7 +22,7 @@ const sendConfirmationEmailABC = async (email, name) => {
             html: `
             <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd;">
                 <h2 style="color: #4CAF50;">✅ Inscripción confirmada</h2>
-                <p>Hola <strong>${nombre}</strong>,</p>
+                <p>Hola <strong>${name}</strong>,</p>
                 <p>Te confirmamos que tu inscripción en <strong>El ABC del Evangelio</strong> ha sido registrada con éxito.</p>
                 <br/>
                 <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
