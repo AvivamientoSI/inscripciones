@@ -71,8 +71,8 @@ const sendConfirmationEmailDIS = async (email, name) => {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
             auth: {
-                user: "avivamientosanisidro@gmail.com", // Tu correo
-                pass: "hxmv dqun hyur cbtu" // Tu contraseña o App Password
+                user: process.env.EMAIL_USER, // Tu correo
+                pass: process.env.EMAIL_PASS // Tu contraseña o App Password
             }
         });
 
@@ -132,8 +132,8 @@ const sendConfirmationEmailES = async (email, name) => {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
             auth: {
-                user: "avivamientosanisidro@gmail.com", // Tu correo
-                pass: "hxmv dqun hyur cbtu" // Tu contraseña o App Password
+                user: process.env.EMAIL_USER, // Tu correo
+                pass: process.env.EMAIL_PASS // Tu contraseña o App Password
             }
         });
 
