@@ -66,7 +66,7 @@ export const createABC = async (req, res)=>{
     }
 };
 
-/* const sendConfirmationEmailDIS = async (email, name) => {
+const sendConfirmationEmailDIS = async (email, name) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
@@ -84,7 +84,7 @@ export const createABC = async (req, res)=>{
             html: `
             <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd;">
                 <h2 style="color: #4CAF50;">✅ Inscripción confirmada</h2>
-                <p>Hola <strong>${nombre}</strong>,</p>
+                <p>Hola <strong>${name}</strong>,</p>
                 <p>Te confirmamos que tu inscripción en el <strong>Discipulado</strong> ha sido registrada con éxito.</p>
                 <br/>
                 <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
@@ -100,7 +100,7 @@ export const createABC = async (req, res)=>{
     } catch (error) {
         console.error("Error al enviar correo:", error.message);
     }
-}; */
+};
 
 export const createDIS = async (req, res)=>{
     const dis = req.body;
@@ -119,7 +119,7 @@ export const createDIS = async (req, res)=>{
             return res.status(400).json({ message: "Ya estas registrado/a" });
         }
         await newDIS.save();
-        /* await sendConfirmationEmailDIS(dis.email, dis.name); */
+        await sendConfirmationEmailDIS(dis.email, dis.name);
         res.status(201).json({success: true, data: newDIS});
     } catch (error) {
         console.error("Error in Create DIS:", error.message);
@@ -127,7 +127,7 @@ export const createDIS = async (req, res)=>{
     }
 };
 
-/* const sendConfirmationEmailES = async (email, name) => {
+const sendConfirmationEmailES = async (email, name) => {
     try {
         const transporter = nodemailer.createTransport({
             service: "gmail", // Puedes usar otro servicio SMTP
@@ -144,7 +144,7 @@ export const createDIS = async (req, res)=>{
             html: `
             <div style="font-family: Arial, sans-serif; padding: 20px; border: 1px solid #ddd;">
                 <h2 style="color: #4CAF50;">✅ Inscripción confirmada</h2>
-                <p>Hola <strong>${nombre}</strong>,</p>
+                <p>Hola <strong>${name}</strong>,</p>
                 <p>Te confirmamos que tu inscripción en <strong>La Escuela de Vida</strong> ha sido registrada con éxito.</p>
                 <br/>
                 <p>Si tienes alguna pregunta, no dudes en contactarnos.</p>
@@ -160,7 +160,7 @@ export const createDIS = async (req, res)=>{
     } catch (error) {
         console.error("Error al enviar correo:", error.message);
     }
-}; */
+};
 
 export const createES = async (req, res)=>{
     const es = req.body;
@@ -179,7 +179,7 @@ export const createES = async (req, res)=>{
             return res.status(400).json({ message: "Ya estas registrado/a" });
         }
         await newES.save();
-        /* await sendConfirmationEmailES(es.email, es.name); */
+        await sendConfirmationEmailES(es.email, es.name);
         res.status(201).json({success: true, data: newES});
     } catch (error) {
         console.error("Error in Create ES:", error.message);
