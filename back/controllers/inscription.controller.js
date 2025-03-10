@@ -186,3 +186,33 @@ export const createES = async (req, res)=>{
         res.status(500).json({success: false, message: "Server Error"});
     }
 }
+
+export const getInscriptionsABC = async (req, res)=>{
+    try {
+        const inscriptionABC = await ABC.find({})
+        res.status(200).json({success: true, data: inscriptionABC});
+    } catch (error) {
+        console.log("error in fetching inscriptions:", error.message);
+        res.status(500).json({success: false, message: "Server Error"});
+    }
+};
+
+export const getInscriptionsDIS = async (req, res)=>{
+    try {
+        const inscriptionDIS = await DIS.find({})
+        res.status(200).json({success: true, data: inscriptionDIS});
+    } catch (error) {
+        console.log("error in fetching inscriptions:", error.message);
+        res.status(500).json({success: false, message: "Server Error"});
+    }
+};
+
+export const getInscriptionsES = async (req, res)=>{
+    try {
+        const inscriptionES = await ES.find({})
+        res.status(200).json({success: true, data: inscriptionES});
+    } catch (error) {
+        console.log("error in fetching inscriptions:", error.message);
+        res.status(500).json({success: false, message: "Server Error"});
+    }
+};
