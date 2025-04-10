@@ -15,7 +15,7 @@ export const createRegistration = async (req, res) => {
             const existingPerson = await Registration.findOne({document});
     
             if(existingPerson) {
-                return res.status(400).json({success: false, message: "Ya estas registrado/a" });
+                return res.status(400).json({success: false, message: "Ya estas registrado/a", data: existingPerson});
             }
             await newReg.save();
             res.status(201).json({success: true, data: newReg, message:"Registro exitoso"});
@@ -50,4 +50,17 @@ export const updateRegistration = async (req, res) => {
         res.status(500).json({success: false, message: "Server Error"});
     }
 
-}
+};
+
+export const deleteRegistration = async (req, res) => {
+    const {id} = req.params;
+    if(!mongoose.Types.ObjectId.isValid(id)){
+        return res.status(404).json({success: false, message: "Person not found"});
+    }
+    try {
+        await Registration.findByIdAndDelete(id);
+        res.status(200).json({success: true, message: "Person deleted successfully"});
+    } catch (error) {
+        res.status(500).json({success: false, message: "Server Error"});
+    }
+};
